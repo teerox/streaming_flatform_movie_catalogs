@@ -2,10 +2,7 @@ package com.example.moviecatalogs.controller;
 
 import com.example.moviecatalogs.entity.MovieInfo;
 import com.example.moviecatalogs.service.MovieInfoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,14 @@ public class MovieInfoController {
     @GetMapping("/movie-info/list")
     public List<MovieInfo> fetchAll() {
         return movieInfoService.fetchAll();
+    }
+
+    @GetMapping("/movie-info/list/{movieId}")
+    public String fetchById(@PathVariable Long movieId) {
+        MovieInfo movieInfo = movieInfoService.findById(movieId);
+        if (movieInfo == null) {
+            throw new RuntimeException("Movie not found");
+        }
+        return movieInfo.getPath();
     }
 }

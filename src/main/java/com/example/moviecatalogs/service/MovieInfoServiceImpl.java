@@ -2,7 +2,6 @@ package com.example.moviecatalogs.service;
 
 import com.example.moviecatalogs.entity.MovieInfo;
 import com.example.moviecatalogs.repository.MovieInfoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
