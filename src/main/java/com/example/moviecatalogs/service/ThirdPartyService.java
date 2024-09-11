@@ -6,5 +6,5 @@ import org.springframework.web.client.RestTemplate;
 
 
 public interface ThirdPartyService {
-    public ThirdPartyApiResponse fetchData();
+    public ThirdPartyApiResponse fetchData(Long page);
 }

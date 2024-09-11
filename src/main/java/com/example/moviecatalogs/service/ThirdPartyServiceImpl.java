@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class ThirdPartyServiceImpl implements ThirdPartyService {
 
-    public static final String THIRD_PARTY_SERVICE = "http://movie-third-party-service";
+    public static final String THIRD_PARTY_SERVICE = "http://movie-third-party-service/movies-external/list";
 
     private final RestTemplate restTemplate;
 
@@ -15,9 +15,13 @@ public class ThirdPartyServiceImpl implements ThirdPartyService {
         this.restTemplate = restTemplate;
     }
 
-    public ThirdPartyApiResponse fetchData() {
+    public ThirdPartyApiResponse fetchData(Long page) {
+        // Construct the URL with the page parameter
+        String url = THIRD_PARTY_SERVICE + "?page=" + page;
+        System.out.println("URL: " + url);
         return restTemplate
-                .getForEntity(THIRD_PARTY_SERVICE, ThirdPartyApiResponse.class)
+                .getForEntity(url, ThirdPartyApiResponse.class)
                 .getBody();
     }
+
 }
