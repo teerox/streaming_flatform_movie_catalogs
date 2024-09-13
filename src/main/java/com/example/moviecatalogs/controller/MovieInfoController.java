@@ -23,7 +23,7 @@ public class MovieInfoController {
     }
 
     @GetMapping("/movies/list")
-    public List<MovieInfo> fetchAll() {
+    public List<MovieEntity> fetchAll() {
         return movieInfoService.fetchAll();
     }
 
@@ -46,19 +46,28 @@ public class MovieInfoController {
         return apiResponse;
     }
 
-    @PostMapping("/movie-info/save")
+    @PostMapping("/movies/save")
     public void saveMovieInfo(@RequestBody List<MovieInfo> movieInfo) {
         movieInfoService.saveAll(movieInfo);
 
     }
 
 
-    @GetMapping("/movie-info/list/{movieId}")
-    public String fetchById(@PathVariable Long movieId) {
-        MovieInfo movieInfo = movieInfoService.findById(movieId);
+    @GetMapping("/movies/{movieId}")
+    public MovieEntity fetchById(@PathVariable Long movieId) {
+        MovieEntity movieInfo = movieInfoService.findById(movieId);
         if (movieInfo == null) {
             throw new RuntimeException("Movie not found");
         }
-        return movieInfo.getPath();
+        return movieInfo;
+    }
+
+    @GetMapping("/movies/video/{movieId}")
+    public String fetchVideoPathById(@PathVariable Long movieId) {
+        MovieEntity movieInfo = movieInfoService.findById(movieId);
+        if (movieInfo == null) {
+            throw new RuntimeException("Movie not found");
+        }
+        return movieInfo.getMovie_path();
     }
 }

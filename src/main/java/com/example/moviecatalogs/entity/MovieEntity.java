@@ -26,6 +26,7 @@ public class MovieEntity {
     private String release_date;
     private double vote_average;
     private long vote_count;
+    private String movie_path;
 
     public Long getId() {
         return id;
@@ -137,5 +138,13 @@ public class MovieEntity {
 
     public void setVote_count(long vote_count) {
         this.vote_count = vote_count;
+    }
+
+    public String getMovie_path() {
+        return movie_path;
+    }
+
+    public void setMovie_path(String movie_path) {
+        this.movie_path = movie_path;
     }
 }

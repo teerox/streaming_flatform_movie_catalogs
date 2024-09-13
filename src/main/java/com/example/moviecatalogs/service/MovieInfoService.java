@@ -10,14 +10,14 @@ import java.util.List;
 public interface MovieInfoService {
 
 
-    List<MovieInfo> fetchAll();
+    List<MovieEntity> fetchAll();
 
-    MovieInfo findById(Long theId);
+    MovieEntity findById(Long theId);
 
-    void save(MovieInfo movieInfo);
+    void save(MovieEntity movieInfo);
 
     void saveAll(List<MovieInfo> movieInfo);
 
-    public Page<MovieEntity> getPaginatedMovies(int page);
+     Page<MovieEntity> getPaginatedMovies(int page);
 
 }

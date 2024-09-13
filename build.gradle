@@ -32,7 +32,8 @@ dependencies {
 //	implementation 'com.mysql:mysql-connector-j'
 //	implementation 'mysql:mysql-connector-java:8.0.33'
 
-	//add mysql dependency
+	//add config client dependency
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

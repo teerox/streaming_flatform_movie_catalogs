@@ -34,18 +34,18 @@ public class MovieInfoServiceImpl implements MovieInfoService{
     }
 
     @Override
-    public List<MovieInfo> fetchAll() {
-        return movieInfoRepository.findAll();
+    public List<MovieEntity> fetchAll() {
+        return movieExternalRepository.findAll();
     }
 
     @Override
-    public MovieInfo findById(Long theId) {
-        return movieInfoRepository.findById(theId).orElse(null);
+    public MovieEntity findById(Long theId) {
+        return movieExternalRepository.findById(theId).orElse(null);
     }
 
     @Override
-    public void save(MovieInfo movieInfo) {
-        movieInfoRepository.save(movieInfo);
+    public void save(MovieEntity movieInfo) {
+        movieExternalRepository.save(movieInfo);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class MovieInfoServiceImpl implements MovieInfoService{
         return db_result;
     }
 
-    private static MovieEntity setMovieEntity(ThirdPartyApiResultResponse result) {
+    private MovieEntity setMovieEntity(ThirdPartyApiResultResponse result) {
         MovieEntity entity = new MovieEntity();
         entity.setId(result.getId());
         entity.setExternal_id(result.getId());
